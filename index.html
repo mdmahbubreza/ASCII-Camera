@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+	<title>ascii camera</title>
+	<meta charset="utf-8" />
+ 	<link rel="stylesheet" href="css/main.css"/>
+	<link href="/favicon.png" rel="icon" type="image/png" />
+	<meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+	<header id="topbar">
+		<div id="appTitle">ASCII Camera</div>
+		<nav id="topActions" aria-label="External links">
+			<a href="https://github.com/mdmahbubreza" id="githubBtn" target="_blank" rel="noopener noreferrer">GitHub</a>
+			<a href="https://github.com/sponsors/mdmahbubreza" id="sponsorBtn" target="_blank" rel="noopener noreferrer">Sponsor</a>
+		</nav>
+	</header>
+
+	<h1 id="info">Please allow this page to access your camera.</h1>
+
+	<div id="notSupported">
+		<h1>Your browser does not support the Camera API.</h1>
+		<img src="images/screenshot.png" align="center" />
+	</div>
+
+	<main id="app">
+		<section id="controls" aria-label="ASCII Camera controls">
+			<div class="controlField">
+				<label for="charsetSelect">Style</label>
+				<select id="charsetSelect">
+					<option value="classic">Classic</option>
+					<option value="blocks">Blocks</option>
+					<option value="matrix">Matrix</option>
+					<option value="dense">Dense</option>
+				</select>
+			</div>
+
+			<div class="controlField">
+				<label for="funModeSelect">Fun mode</label>
+				<select id="funModeSelect">
+					<option value="none">None</option>
+					<option value="glitch">Glitch</option>
+					<option value="edge">Edge detect</option>
+					<option value="emoji">Emoji</option>
+				</select>
+			</div>
+
+			<div class="controlField controlFieldWide">
+				<label for="resolutionRange">Resolution <span id="resolutionLabel">High</span></label>
+				<input id="resolutionRange" type="range" min="1" max="3" value="3" />
+			</div>
+
+			<div class="controlActions">
+				<button id="toggleColor" type="button">Color: Off</button>
+				<button id="toggleMatrix" type="button">Matrix: Off</button>
+				<button id="captureFrame" type="button">Capture PNG</button>
+				<button id="copyAscii" type="button">Copy ASCII</button>
+				<button id="downloadAscii" type="button">Download TXT</button>
+				<button id="button" type="button">Pause</button>
+			</div>
+		</section>
+
+		<section id="stage" aria-label="ASCII output area">
+			<pre id="ascii"></pre>
+			<pre id="matrixOverlay" aria-hidden="true"></pre>
+		</section>
+	</main>
+
+	<div id="hud" aria-live="polite" class="expanded">
+		<button id="hudToggle" type="button" aria-label="Toggle help panel">Help</button>
+		<div id="hudContent">
+			<div id="fpsIndicator">FPS: --</div>
+			<div id="shortcutLegend">
+				<div>A - change charset</div>
+				<div>C - toggle color</div>
+				<div>M - toggle matrix</div>
+				<div>S - capture</div>
+				<div>+ / - - resolution</div>
+				<div>H - toggle help</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="script/camera.js"></script>
+	<script src="script/ascii.js"></script>
+	<script src="script/app.js"></script>
+</body>
+</html>
