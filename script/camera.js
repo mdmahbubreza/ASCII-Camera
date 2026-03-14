@@ -1,10 +1,4 @@
-/*
-	camera.js v1.1
-	http://github.com/idevelop/camera.js
 
-	Author: Andrei Gheorghe (http://idevelop.github.com)
-	License: MIT
-*/
 
 var camera = (function() {
 	var options;
@@ -29,9 +23,9 @@ var camera = (function() {
 				audio: false,
 			}).then(function(stream) {
 				streamRef = stream;
-				options.onSuccess();
 				video.srcObject = stream;
 				initCanvas();
+				options.onSuccess();
 			}).catch(options.onError);
 			return;
 		}
@@ -43,7 +37,6 @@ var camera = (function() {
 				audio: false,
 			}, function(stream) {
 				streamRef = stream;
-				options.onSuccess();
 
 				if (video.mozSrcObject !== undefined) {
 					video.mozSrcObject = stream;
@@ -52,6 +45,7 @@ var camera = (function() {
 				}
 
 				initCanvas();
+				options.onSuccess();
 			}, options.onError);
 		} else {
 			options.onNotSupported();
